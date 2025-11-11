@@ -175,6 +175,15 @@ export function HtmlCompiler() {
     }
   }, [code, livePreview]);
 
+  useEffect(() => {
+    if (mobileView === "preview") {
+      const timer = setTimeout(() => {
+        updatePreview();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [mobileView, code]);
+
   const updatePreview = () => {
     if (iframeRef.current) {
       const iframeDoc = iframeRef.current.contentDocument;
@@ -317,10 +326,12 @@ export function HtmlCompiler() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Editor Panel */}
         <div
-          className={`${mobileView === "editor" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col md:border-r border-border`}
+          className={`w-full md:w-1/2 flex flex-col md:border-r border-border absolute md:relative inset-0 md:inset-auto ${
+            mobileView === "editor" ? "block" : "hidden md:flex"
+          }`}
         >
           <div className="bg-card border-b border-border px-3 sm:px-4 py-2 flex items-center gap-2">
             <Code2 className="w-4 h-4 text-muted-foreground" />
@@ -343,7 +354,9 @@ export function HtmlCompiler() {
 
         {/* Preview Panel */}
         <div
-          className={`${mobileView === "preview" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col`}
+          className={`w-full md:w-1/2 flex flex-col absolute md:relative inset-0 md:inset-auto ${
+            mobileView === "preview" ? "block" : "hidden md:flex"
+          }`}
         >
           <div className="bg-card border-b border-border px-3 sm:px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -351,6 +364,7 @@ export function HtmlCompiler() {
               <span className="text-xs sm:text-sm font-medium">Preview</span>
             </div>
             <Button
+              type="button"
               variant="ghost"
               size="sm"
               onClick={handleFullscreen}
