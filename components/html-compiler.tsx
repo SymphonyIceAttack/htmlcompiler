@@ -3,7 +3,8 @@
 import { html } from "@codemirror/lang-html";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import CodeMirror from "@uiw/react-codemirror";
-import { Code2, Download, Eye, Maximize2, Play } from "lucide-react";
+import { BookOpen, Code2, Download, Eye, Maximize2, Play } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AboutDialog } from "@/components/about-dialog";
 import { FaqDialog } from "@/components/faq-dialog";
@@ -241,6 +242,22 @@ export function HtmlCompiler() {
             </div>
 
             <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="h-8 text-xs sm:text-sm"
+              >
+                <Link
+                  href="/posts"
+                  className="flex items-center gap-1.5"
+                  scroll={false}
+                >
+                  <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span>Blog</span>
+                </Link>
+              </Button>
+
               <FaqDialog />
               <AboutDialog />
 
