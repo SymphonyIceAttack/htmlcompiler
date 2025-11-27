@@ -3,11 +3,19 @@
 import { html } from "@codemirror/lang-html";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import CodeMirror from "@uiw/react-codemirror";
-import { BookOpen, Code2, Download, Eye, Maximize2, Play } from "lucide-react";
+import {
+  BookOpen,
+  Code2,
+  Download,
+  Eye,
+  HelpCircle,
+  Info,
+  Mail,
+  Maximize2,
+  Play,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AboutDialog } from "@/components/about-dialog";
-import { FaqDialog } from "@/components/faq-dialog";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -258,8 +266,41 @@ export function HtmlCompiler() {
                 </Link>
               </Button>
 
-              <FaqDialog />
-              <AboutDialog />
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="h-8 text-xs sm:text-sm"
+              >
+                <Link href="/faq" className="flex items-center gap-1.5">
+                  <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span>FAQ</span>
+                </Link>
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="h-8 text-xs sm:text-sm"
+              >
+                <Link href="/about" className="flex items-center gap-1.5">
+                  <Info className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span>About</span>
+                </Link>
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="h-8 text-xs sm:text-sm"
+              >
+                <Link href="/contact" className="flex items-center gap-1.5">
+                  <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span>Contact</span>
+                </Link>
+              </Button>
 
               {/* Theme Toggle Button */}
               <ThemeToggle />
