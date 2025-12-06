@@ -1,7 +1,35 @@
 {
   "name": "htmlcompiler",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Online HTML playground with live preview and modern code editor",
+  "private": false,
+  "homepage": "https://htmlcompiler.top",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SymphonyIceAttack/htmlcompiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SymphonyIceAttack/htmlcompiler/issues"
+  },
+  "keywords": [
+    "html",
+    "editor",
+    "code",
+    "playground",
+    "preview",
+    "web-development",
+    "codemirror",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss"
+  ],
+  "author": {
+    "name": "SymphonyIceAttack",
+    "email": "1994370030@qq.com",
+    "url": "https://github.com/SymphonyIceAttack"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
